@@ -1,10 +1,12 @@
 #include "mbed.h"
-
+#include "FreeRTOS.h"
+#include "task.h"
 
 int main()
 {
-    DigitalOut led(PA_5);
+    DigitalOut led(PA_6);
     
+    vTaskStartScheduler();
     while(1)
     {
     	led = 1;

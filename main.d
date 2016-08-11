@@ -106,7 +106,13 @@ main.o: main.cpp mbed_config.h mbed-src/api/mbed.h \
  mbed-src/api/LowPowerTimeout.h mbed-src/api/LowPowerTicker.h \
  mbed-src/api/LowPowerTimer.h mbed-src/api/LocalFileSystem.h \
  mbed-src/api/InterruptIn.h mbed-src/hal/gpio_irq_api.h \
- mbed-src/api/wait_api.h mbed-src/hal/sleep_api.h mbed-src/api/rtc_time.h
+ mbed-src/api/wait_api.h mbed-src/hal/sleep_api.h mbed-src/api/rtc_time.h \
+ FreeRTOS/Source/include/FreeRTOS.h FreeRTOS/FreeRTOSConfig.h \
+ FreeRTOS/Source/include/projdefs.h FreeRTOS/Source/include/portable.h \
+ FreeRTOS/Source/include/deprecated_definitions.h \
+ FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/portmacro.h \
+ FreeRTOS/Source/include/mpu_wrappers.h FreeRTOS/Source/include/task.h \
+ FreeRTOS/Source/include/list.h
 
 mbed_config.h:
 
@@ -391,3 +397,21 @@ mbed-src/api/wait_api.h:
 mbed-src/hal/sleep_api.h:
 
 mbed-src/api/rtc_time.h:
+
+FreeRTOS/Source/include/FreeRTOS.h:
+
+FreeRTOS/FreeRTOSConfig.h:
+
+FreeRTOS/Source/include/projdefs.h:
+
+FreeRTOS/Source/include/portable.h:
+
+FreeRTOS/Source/include/deprecated_definitions.h:
+
+FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/portmacro.h:
+
+FreeRTOS/Source/include/mpu_wrappers.h:
+
+FreeRTOS/Source/include/task.h:
+
+FreeRTOS/Source/include/list.h:
