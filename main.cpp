@@ -5,7 +5,13 @@
 int main()
 {
     DigitalOut led(PA_6);
-    
+
+    /*
+     *
+     * INITIALIZE SDRAM HERE! BEFORE ANY FreeRTOS FUNCTION!!
+     *
+     */
+
     vTaskStartScheduler();
     while(1)
     {
@@ -14,4 +20,9 @@ int main()
     	led = 0;
     	wait(1000);
     }
+}
+
+void HAL_SDRAM_RefreshErrorCallback(SDRAM_HandleTypeDef *hsdram)
+{
+	// SDRAM error occured!!!
 }

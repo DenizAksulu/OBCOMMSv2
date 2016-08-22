@@ -3,6 +3,7 @@ MEMORY
 { 
   FLASH (rx) : ORIGIN = 0x08000000, LENGTH = 1024K
   RAM (rwx)  : ORIGIN = 0x200001C8, LENGTH = 320K - 0x1C8
+  SDRAM (rwx): ORIGIN = 0xC0000000, LENGTH = 0x0FFFFFFF
 }
 
 /* Linker script to place sections and symbol values. Should be used together
@@ -61,6 +62,11 @@ SECTIONS
 
         KEEP(*(.eh_frame*))
     } > FLASH
+    
+    .sdram :
+    {
+    
+    } > SDRAM
 
     .ARM.extab :
     {
