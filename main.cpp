@@ -2,9 +2,14 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
+void WDT_TaskCode(void* PARAMETERS);
+
+
+DigitalOut led(PB_7);
 int main()
 {
-    DigitalOut led(PA_6);
+	SystemCoreClock = 216000000;
+	SystemCoreClockUpdate();
 
     /*
      *
@@ -12,14 +17,23 @@ int main()
      *
      */
 
+    TaskHandle_t WDT_TaskHandle = NULL;
+    xTaskCreate(WDT_TaskCode, "WDTTask", 500, NULL, 5, &WDT_TaskHandle);
     vTaskStartScheduler();
     while(1)
     {
-    	led = 1;
-    	wait(1000);
-    	led = 0;
-    	wait(1000);
     }
+}
+
+void WDT_TaskCode(void* PARAMETERS)
+{
+	while(1)
+	{
+		led = 1;
+		vTaskDelay(10000);
+		led = 0;
+		vTaskDelay(10000);
+	}
 }
 
 void HAL_SDRAM_RefreshErrorCallback(SDRAM_HandleTypeDef *hsdram)
