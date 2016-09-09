@@ -21,7 +21,7 @@
  */
 #ifndef __CTHUNK_H__
 #define __CTHUNK_H__
-
+#include "stddef.h"
 #define CTHUNK_ADDRESS 1
 
 #if defined(__CORTEX_M3) || defined(__CORTEX_M4) || defined(__thumb2__)

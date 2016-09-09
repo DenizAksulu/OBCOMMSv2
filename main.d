@@ -1,4 +1,4 @@
-main.o: main.cpp mbed_config.h mbed-src/api/mbed.h \
+main.o: main.cpp mbed_config.h OBCOMMSv2.h mbed-src/api/mbed.h \
  mbed-src/api/platform.h \
  mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG/device.h \
  mbed-src/targets/hal/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG/objects.h \
@@ -112,9 +112,12 @@ main.o: main.cpp mbed_config.h mbed-src/api/mbed.h \
  FreeRTOS/Source/include/deprecated_definitions.h \
  FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  FreeRTOS/Source/include/mpu_wrappers.h FreeRTOS/Source/include/task.h \
- FreeRTOS/Source/include/list.h
+ FreeRTOS/Source/include/list.h FreeRTOS/Source/include/semphr.h \
+ FreeRTOS/Source/include/queue.h
 
 mbed_config.h:
+
+OBCOMMSv2.h:
 
 mbed-src/api/mbed.h:
 
@@ -415,3 +418,7 @@ FreeRTOS/Source/include/mpu_wrappers.h:
 FreeRTOS/Source/include/task.h:
 
 FreeRTOS/Source/include/list.h:
+
+FreeRTOS/Source/include/semphr.h:
+
+FreeRTOS/Source/include/queue.h:

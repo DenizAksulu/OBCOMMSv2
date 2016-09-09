@@ -70,8 +70,8 @@
  *----------------------------------------------------------*/
 
 /* Ensure stdint is only used by the compiler, and not the assembler. */
-	#include <stdint.h>
-	extern uint32_t SystemCoreClock;
+#include <stdint.h>
+extern uint32_t SystemCoreClock;
 
 #define configUSE_PREEMPTION			1
 #define configUSE_IDLE_HOOK				0//1

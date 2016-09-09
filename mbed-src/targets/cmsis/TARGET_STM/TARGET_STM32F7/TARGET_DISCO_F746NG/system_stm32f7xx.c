@@ -281,7 +281,7 @@ void SystemCoreClockUpdate(void)
   uint32_t tmp = 0, pllvco = 432000000, pllp = 2, pllsource = 0, pllm = 2;
   
   /* Get SYSCLK source -------------------------------------------------------*/
-  RCC->CFGR = 0x08;
+  // RCC->CFGR = 0x08;
   tmp = RCC->CFGR & RCC_CFGR_SWS;
 
   switch (tmp)
@@ -672,13 +672,13 @@ uint8_t SetSysClock_PLL_HSI(void)
   
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
-    return 0; // FAIL
+    // todo return 0; // FAIL
   }
  
   // Activate the OverDrive to reach the 216 MHz Frequency
   if (HAL_PWREx_EnableOverDrive() != HAL_OK)
   {
-    return 0; // FAIL
+	  // todo return 0; // FAIL
   }
   
   // Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 clocks dividers
@@ -690,7 +690,7 @@ uint8_t SetSysClock_PLL_HSI(void)
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_7) != HAL_OK)
   {
-    return 0; // FAIL
+	  // todo return 0; // FAIL
   }
 
   return 1; // OK
