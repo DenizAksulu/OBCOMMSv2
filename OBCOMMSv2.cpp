@@ -10,6 +10,7 @@
 namespace OBCOMMSv2
 {
 	DigitalOut LED_BLUE(PB_7);
+	DigitalOut LED_RED(PB_14);
     TaskHandle_t WDT_TaskHandle = NULL;
 #if DEBUG
 		Serial DebugPort(PD_8, PD_9, "DebugPort");

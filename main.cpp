@@ -7,6 +7,7 @@ static void SystemClock_Config (void);
 
 int main()
 {
+	//SystemClock_Config();
 #if DEBUG
 	DebugPort.baud(115200);	// initialize debug port
 #endif
@@ -41,56 +42,49 @@ void HAL_SDRAM_RefreshErrorCallback(SDRAM_HandleTypeDef *hsdram)
 }
 
 
-/*
-   System Clock Configuration
-     System Clock source            = PLL (HSE)
-     SYSCLK(Hz)                     = 216000000
-     HCLK(Hz)                       = 216000000
-     AHB Prescaler                  = 1
-     APB1 Prescaler                 = 4
-     APB2 Prescaler                 = 2
-     HSE Frequency(Hz)              = 25000000
-     PLL_M                          = 25
-     PLL_N                          = 432
-     PLL_P                          = 2
-     PLL_Q                          = 9
-     VDD(V)                         = 3.3
-     Main regulator output voltage  = Scale1 mode
-     Flash Latency(WS)              = 7
- */
-static void SystemClock_Config (void)
+void SystemClock_Config(void)
 {
-	RCC_OscInitTypeDef RCC_OscInitStruct;
-	RCC_ClkInitTypeDef RCC_ClkInitStruct;
+	  RCC_OscInitTypeDef RCC_OscInitStruct;
+	  RCC_ClkInitTypeDef RCC_ClkInitStruct;
 
-	RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-	RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-	RCC_OscInitStruct.HSICalibrationValue = 16;
-	RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-	RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-	RCC_OscInitStruct.PLL.PLLM = 8;
-	RCC_OscInitStruct.PLL.PLLN = 216;
-	RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-	RCC_OscInitStruct.PLL.PLLQ = 2;
-	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-	{
-	}
+	  __HAL_RCC_PWR_CLK_ENABLE();
 
-	if (HAL_PWREx_EnableOverDrive() != HAL_OK)
-	{
-	}
+	  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
-	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-							  |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-	RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-	RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-	RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-	RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
-	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_7) != HAL_OK)
-	{
-	}
+	  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+	  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+	  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+	  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+	  RCC_OscInitStruct.PLL.PLLM = 25;
+	  RCC_OscInitStruct.PLL.PLLN = 432;
+	  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+	  RCC_OscInitStruct.PLL.PLLQ = 2;
+	  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+	  {
+		  LED_RED = 1;
+	  }
 
-	SystemCoreClockUpdate();
-	///SystemCoreClock = 216000000;
+	  if (HAL_PWREx_EnableOverDrive() != HAL_OK)
+	  {
+		  LED_RED = 1;
+	  }
+
+	  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+	                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+	  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+	  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+	  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+	  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+	  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_7) != HAL_OK)
+	  {
+		  LED_RED = 1;
+	  }
+
+	  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+
+	  HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
+
+	  /* SysTick_IRQn interrupt configuration */
+	  HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+  SystemCoreClockUpdate();
 }
-

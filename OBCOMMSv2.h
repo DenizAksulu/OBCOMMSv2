@@ -31,6 +31,7 @@
 
 namespace OBCOMMSv2
 {
+	extern DigitalOut LED_RED;
 	extern DigitalOut LED_BLUE;
     extern TaskHandle_t WDT_TaskHandle;
     extern SemaphoreHandle_t MUTEX_DEBUG;
