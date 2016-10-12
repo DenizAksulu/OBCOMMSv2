@@ -113,7 +113,9 @@ main.o: main.cpp mbed_config.h OBCOMMSv2.h mbed-src/api/mbed.h \
  FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  FreeRTOS/Source/include/mpu_wrappers.h FreeRTOS/Source/include/task.h \
  FreeRTOS/Source/include/list.h FreeRTOS/Source/include/semphr.h \
- FreeRTOS/Source/include/queue.h
+ FreeRTOS/Source/include/queue.h Libraries/sdram.h \
+ mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/stm32f7xx_hal.h \
+ mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG/stm32f7xx_hal_conf.h
 
 mbed_config.h:
 
@@ -422,3 +424,9 @@ FreeRTOS/Source/include/list.h:
 FreeRTOS/Source/include/semphr.h:
 
 FreeRTOS/Source/include/queue.h:
+
+Libraries/sdram.h:
+
+mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/stm32f7xx_hal.h:
+
+mbed-src/targets/cmsis/TARGET_STM/TARGET_STM32F7/TARGET_DISCO_F746NG/stm32f7xx_hal_conf.h:

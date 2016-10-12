@@ -9,11 +9,10 @@
 
 namespace OBCOMMSv2
 {
-	DigitalOut LED_BLUE(PB_7);
-	DigitalOut LED_RED(PB_14);
+	DigitalOut LED_GREEN(PI_1);
     TaskHandle_t WDT_TaskHandle = NULL;
 #if DEBUG
-		Serial DebugPort(PD_8, PD_9, "DebugPort");
+		Serial DebugPort(PA_9, PB_7, "DebugPort");
 #endif
-	SemaphoreHandle_t MUTEX_DEBUG = xQueueCreateMutex(queueQUEUE_TYPE_MUTEX);
+	SemaphoreHandle_t MUTEX_DEBUG;
 }
