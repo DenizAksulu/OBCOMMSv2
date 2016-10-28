@@ -24,7 +24,6 @@
 # Compiled Static libraries
 *.lai
 *.la
-*.a
 *.lib
 
 # Executables
@@ -86,3 +85,4 @@ $RECYCLE.BIN/
 *.map
 *.o
 *.txt
+*.xml

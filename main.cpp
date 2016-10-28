@@ -1,4 +1,5 @@
 #include "OBCOMMSv2.h"
+#include "nanocam.h"
 
 using namespace OBCOMMSv2;
 
